@@ -1,0 +1,25 @@
+<div >
+  <ul class="pages">
+    <li class="chat page" *ngIf="togglechat">
+      <div class="chatArea" >
+        <ul class="messages" >
+          <li *ngFor="let mess of gloabalMessages" class="chat-notification ">
+            <pre><b>{{mess}}</b></pre>
+          </li>
+          <li #messages *ngFor="let mess of messages"  >
+            <pre><b class="username">{{mess.username}}</b>:{{mess.message}}</pre>
+          </li>
+        </ul>
+      </div>
+      <input #inputmessage class="inputMessage" placeholder="Type here..." [(ngModel)]="curMessage" maxlength="100" (keyup.enter)="sendMessage()"/>
+      <label>{{inputmessage.value.length}}/100</label>
+    </li>
+    <li class="login page" *ngIf="!togglechat">
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input #inputm  class="usernameInput" [(ngModel)]="usernameInput" type="text" maxlength="14" (keyup.enter)="onEnter()"/>
+        <label>{{inputm.value.length}}/14</label>
+      </div>
+    </li>
+  </ul>
+</div>
